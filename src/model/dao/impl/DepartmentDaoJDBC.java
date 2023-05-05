@@ -46,9 +46,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-				Department department = new Department();
-				department.setId(resultSet.getInt("Id"));
-				department.setName(resultSet.getString("Name"));
+				Department department = instantiateDepartment(resultSet);
 				
 				return department;
 			}
@@ -66,6 +64,15 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 	@Override
 	public List<Department> findAll() {
 		return null;
+	}
+	
+	private Department instantiateDepartment(ResultSet resultSet) throws SQLException {
+		Department department = new Department();
+		
+		department.setId(resultSet.getInt("Id"));
+		department.setName(resultSet.getString("Name"));
+		
+		return department;
 	}
 
 }
