@@ -34,6 +34,10 @@ public class Program2 {
 		departmentDao.update(selectedDepartment);
 		System.out.println("Update completed");
 		
+		System.out.println("\n===== TEST 5: department delete =====");
+		departmentDao.deleteById(8);
+		System.out.println("Delete completed");
+		
 	}
 
 }
